@@ -65,6 +65,9 @@ class Sql {
   static Create create(String table, {bool ifNotExists = false}) =>
       Create(table, ifNotExists: ifNotExists);
 
+  /// Returns a new [Alter] statement
+  static Alter alter(String table) => Alter(table);
+
   /// Returns a new [Drop] statement
   static Drop drop(String table, {bool onlyIfExists = false}) =>
       Drop(table, onlyIfExists: onlyIfExists);
