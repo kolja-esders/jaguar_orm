@@ -29,7 +29,12 @@ class SqfliteAdapter implements Adapter<sqf.Database> {
         version = null;
 
   /// Connects to the database
-  Future<void> connect({onConfigure, onCreate, onUpgrade, onDowngrade, onOpen}) async {
+  Future<void> connect(
+      {sqf.OnDatabaseConfigureFn onConfigure,
+      sqf.OnDatabaseCreateFn onCreate,
+      sqf.OnDatabaseVersionChangeFn onUpgrade,
+      sqf.OnDatabaseVersionChangeFn onDowngrade,
+      sqf.OnDatabaseOpenFn onOpen}) async {
     if (_connection == null) {
       _connection = await sqf.openDatabase(
         path,
